@@ -13,10 +13,10 @@ decrement = function() {
     comic.attr('value',(currentval<=1)?1:currentval-1);
     update();
 }
-//$('.back').click(decrement);
-//$('.forward').click(increment);
-$('.back').bind('touchend',decrement);
-$('.forward').bind('touchend',increment);
+$('.back').click(decrement);
+$('.forward').click(increment);
+//$('.back').bind('touchend',decrement);
+//$('.forward').bind('touchend',increment);
 $('#number').blur(update);
 $('#number').keypress(function(e){
     if (e.which==13) {
