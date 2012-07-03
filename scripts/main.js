@@ -1,7 +1,9 @@
+preload = new Image();
+
 update = function() {
     num = parseInt($('#number').attr('value'))
     $('.comic').attr('src','http://questionablecontent.net/comics/'+num+'.png');
-    $('.preloader').attr('src','http://questionablecontent.net/comics/'+(num+1)+'.png');
+    preload.src = 'http://questionablecontent.net/comics/'+(num+1)+'.png';
     $(window).scrollTop(0);
     localStorage.number = $('#number').attr('value');
 }
@@ -18,8 +20,6 @@ decrement = function() {
 }
 $('.back').click(decrement);
 $('.forward').click(increment);
-//$('.back').bind('touchend',decrement);
-//$('.forward').bind('touchend',increment);
 $('#number').blur(update);
 $('#number').keypress(function(e){
     if (e.which==13) {
