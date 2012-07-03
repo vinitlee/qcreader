@@ -1,5 +1,7 @@
 update = function() {
-    $('.comic').attr('src','http://questionablecontent.net/comics/'+$('#number').attr('value')+'.png');
+    num = parseInt($('#number').attr('value'))
+    $('.comic').attr('src','http://questionablecontent.net/comics/'+num+'.png');
+    $('.preloader').attr('src','http://questionablecontent.net/comics/'+(num+1)+'.png');
     $(window).scrollTop(0);
     localStorage.number = $('#number').attr('value');
 }

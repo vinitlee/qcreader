@@ -42,3 +42,7 @@ html, body {
     width: 100%;
     margin-bottom: -5px;
 }
+
+.preloader {
+    display:none;
+}
