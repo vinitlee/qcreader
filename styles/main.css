@@ -31,6 +31,9 @@ html, body {
     border: none;
     outline: none;
     color: white;
+    font-face: Helvetica,sans-serif;
+    font-weight:bold;
+    font-size: 16px;
 }
 
 .comic {
