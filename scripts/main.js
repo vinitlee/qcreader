@@ -1,6 +1,7 @@
 update = function() {
     $('.comic').attr('src','http://questionablecontent.net/comics/'+$('#number').attr('value')+'.png');
     $(window).scrollTop(0);
+    localStorage.number = $('#number').attr('value');
 }
 increment = function() {
     comic = $('#number');
@@ -23,4 +24,8 @@ $('#number').keypress(function(e){
         this.blur();
         update();
     }
+});
+$('body').ready(function() {
+    $('#number').attr('value',localStorage.number);
+    update();
 });
