@@ -1,5 +1,6 @@
 update = function() {
     $('.comic').attr('src','http://questionablecontent.net/comics/'+$('#number').attr('value')+'.png');
+    $(window).scrollTop(0);
 }
 increment = function() {
     comic = $('#number');
