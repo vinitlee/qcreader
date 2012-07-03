@@ -3,6 +3,21 @@
     padding: 0;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.back,
+.forward {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    top: 0;
+}
+.back {left:0;background: rgba(255,0,255,0.3);}
+.forward {left:50%;background: rgba(0,255,255,0.3);}
+
 .comic {
     width: 100%;
 }
