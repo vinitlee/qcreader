@@ -23,7 +23,8 @@ paginate = function(step,panes,disp) {
     panes = panes || 4;
     disp = disp || 0;
     
-    step = step * wh / (ch / panes)
+    step = Math.floor(step * wh / (ch / panes)) || step;
+    console.log(step);
     
     segment = ch/4;
     maxScroll = ch-wh;
@@ -52,6 +53,10 @@ preload = new Image();
 $('body').ready(function() {
     $('#number').attr('value',localStorage.number);
     update();
+    if (localStorage.firstTime == undefined) {
+        $('.helpbox').toggle();
+        localStorage.firstTime = false;
+    }
 });
 $('.back').mousedown(decrement);
 $('.forward').mousedown(increment);
@@ -93,4 +98,8 @@ $(document).keydown(function(e){
       paginate(-1);
       return null;
     }
+});
+
+$('.helpbox, .help').mousedown(function() {
+    $('.helpbox').toggle();
 });

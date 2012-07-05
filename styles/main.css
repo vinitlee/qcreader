@@ -32,7 +32,8 @@ html, body {
 .pgup {top: 0%;}
 .pgdn {top: 70%;}
 
-#number {
+#number,
+.help {
     position: fixed;
     top: 0;
     left: 0;
@@ -48,6 +49,27 @@ html, body {
     font-face: Helvetica,sans-serif;
     font-weight:bold;
     font-size: 16px;
+}
+
+.help {
+    width: 20px;
+    height: 20px;
+    left:100%;
+    margin-left:-20px;
+    cursor: pointer;
+}
+
+.helpbox {
+    width: 210px;
+    height: 240px;
+    position: fixed;
+    z-index: 999;
+    left:50%;
+    top:50%;
+    margin:-120px 0 0 -105px;
+    display: none;
+    cursor: pointer;
+    background-image: url('../images/help.png');
 }
 
 .comic {
