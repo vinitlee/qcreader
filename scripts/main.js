@@ -26,12 +26,13 @@ paginate = function(step,disp,segs) {
     
     if ((curScroll >= maxScroll) && (step > 0)) {
         increment();
-        $("html, body").animate({ scrollTop: 0 },10);
+        $("html, body").animate({ scrollTop: 0 },40);
         return null;
     }
     if ((curScroll <= 0) && (step < 0)) {
         decrement();
-        $("html, body").animate({ scrollTop: maxScroll },10);
+        $("html, body").scrollTop(maxScroll);
+        $("html, body").animate({ scrollTop: maxScroll },40);
         return null;
     }
     
