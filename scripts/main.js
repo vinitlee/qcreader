@@ -16,20 +16,27 @@ decrement = function() {
     comic.attr('value',(currentval<=1)?1:currentval-1);
     update();
 }
-paginate = function() {
+paginate = function(step,disp,segs) {
+    disp = disp || 0;
+    segs = segs || 4;
+    
     segment = $('.comic').height()/4;
     maxScroll = $('.comic').height()-$(window).height();
     curScroll = $(document).scrollTop();
-    if (curScroll >= maxScroll) {
+    
+    if ((curScroll >= maxScroll) && (step > 0)) {
         increment();
         return null;
     }
-    $(document).scrollTop(Math.floor((curScroll+1)/segment+1)*segment);
-}
-depaginate = function() {
-    segment = $('.comic').height()/4;
-    curScroll = $(document).scrollTop();
-    $(document).scrollTop(Math.floor((curScroll+1)/segment-1)*segment);
+    if ((curScroll <= 0) && (step < 0)) {
+        decrement();
+        return null;
+    }
+    
+    newScroll = (Math.floor((curScroll+1-disp)/segment+step)*segment+disp)
+    newScroll = newScroll + "px"
+    
+    $("html, body").animate({ scrollTop: newScroll },100);
 }
 
 preload = new Image();
@@ -40,6 +47,8 @@ $('body').ready(function() {
 });
 $('.back').click(decrement);
 $('.forward').click(increment);
+$('.pgup').click(function() {paginate(-1);});
+$('.pgdn').click(function() {paginate(1);});
 $('#number').blur(update);
 $('#number').keypress(function(e){
     if (e.which==13) {
@@ -68,12 +77,12 @@ $(document).keydown(function(e){
     }
     // Down
     if (e.which == 40) { 
-      paginate();
+      paginate(1);
       return null;
     }
     // Up
     if (e.which == 38) { 
-      depaginate();
+      paginate(-1);
       return null;
     }
 });
