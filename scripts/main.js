@@ -45,10 +45,10 @@ $('body').ready(function() {
     $('#number').attr('value',localStorage.number);
     update();
 });
-$('.back').click(decrement);
-$('.forward').click(increment);
-$('.pgup').click(function() {paginate(-1);});
-$('.pgdn').click(function() {paginate(1);});
+$('.back').mousedown(decrement);
+$('.forward').mousedown(increment);
+$('.pgup').mousedown(function() {paginate(-1);});
+$('.pgdn').mousedown(function() {paginate(1);});
 $('#number').blur(update);
 $('#number').keypress(function(e){
     if (e.which==13) {
