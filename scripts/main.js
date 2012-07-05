@@ -16,12 +16,17 @@ decrement = function() {
     comic.attr('value',(currentval<=1)?1:currentval-1);
     update();
 }
-paginate = function(step,disp,segs) {
-    disp = disp || 0;
-    segs = segs || 4;
+paginate = function(step,panes,disp) {
+    ch = $('.comic').height()
+    wh = $(window).height()
     
-    segment = $('.comic').height()/4;
-    maxScroll = $('.comic').height()-$(window).height();
+    panes = panes || 4;
+    disp = disp || 0;
+    
+    step = step * wh / (ch / panes)
+    
+    segment = ch/4;
+    maxScroll = ch-wh;
     curScroll = $(document).scrollTop();
     
     if ((curScroll >= maxScroll) && (step > 0)) {
