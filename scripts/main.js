@@ -47,6 +47,11 @@ paginate = function(step,panes,disp) {
     
     $("html, body").animate({ scrollTop: newScroll },100);
 }
+zoom = function(z) {
+    localStorage.zoom = parseInt(localStorage.zoom) + z;
+    $('.comic').css('width',localStorage.zoom+"%");
+    console.log("zoomed:"+z)
+}
 
 preload = new Image();
 
@@ -54,9 +59,12 @@ $('body').ready(function() {
     $('#number').attr('value',localStorage.number);
     update();
     if (localStorage.firstTime == undefined) {
+        localStorage.zoom = 100;
         $('.helpbox').toggle();
         localStorage.firstTime = false;
     }
+    if (isNaN(localStorage.zoom)) {localStorage.zoom = 100;}
+    zoom(0);
 });
 $('.back').mousedown(decrement);
 $('.forward').mousedown(increment);
@@ -96,6 +104,16 @@ $(document).keydown(function(e){
     // Up
     if (e.which == 38) { 
       paginate(-1);
+      return null;
+    }
+    // -
+    if (e.which == 189) { 
+      zoom(-10);
+      return null;
+    }
+    // +
+    if (e.which == 187) { 
+      zoom(10);
       return null;
     }
 });

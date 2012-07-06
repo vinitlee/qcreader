@@ -73,7 +73,9 @@ html, body {
 }
 
 .comic {
+    display: block;
     width: 100%;
+    margin: 0 auto;
     margin-bottom: -5px;
 }
 
